@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Post(models.Model):
     STATUS =(
@@ -11,6 +12,7 @@ class Post(models.Model):
     datetime_create = models.DateTimeField(auto_now_add=True)
     datetime_update = models.DateTimeField(auto_now=True)
     status = models.CharField(choices=STATUS , max_length=3)
+    email = models.EmailField(max_length=50)
 
     def __str__(self):
         return self.title

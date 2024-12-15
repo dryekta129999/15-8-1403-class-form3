@@ -1,15 +1,22 @@
 {% extends '_base.html' %}
-{% block page_title %}
-	صفحه ایجاد پست
-{% endblock %}
+{#{% load crispy_forms_filters %}#}
+{% load crispy_forms_tags %}
+
+<!-- create_post.html -->
+
+<!-- create_post.html -->
+
 {% block content %}
      <div class="card shadow my-3 p-5">
-                <h3> ایجاد پست:</h3>
+                <h3>Add new Post:</h3>
                 <form method="POST">
                     {% csrf_token %}
-                    
-               
+                    {{ form|crispy }}
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
 {% endblock %}
+
+
+
+

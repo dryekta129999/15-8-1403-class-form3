@@ -1,7 +1,6 @@
-from django.shortcuts import render
-from .models import *
-# Create your views here.
-
+from django.shortcuts import render, redirect
+from .models import Post
+from .forms import NewPostForm
 def show_post(request):
     posts = Post.objects.filter(status='pub')
     return render(request , 'home.html' , {'posts':posts})
@@ -11,16 +10,16 @@ def show_detail_post(request, id):
     return render(request , 'detail.html' , {'post':post})
 
 
+
+
+
+
 def create_post(request):
-    print(request.POST)
-
-    if request.method == 'POST' :
-        print(request.POST.get('title'))
-        print(request.POST.get('information'))
-
-        a = request.POST.get('title')
-        b = request.POST.get('information')
-        Post.objects.create(title = a , information= b , status='drf')
-    else :
-        pass
-    return render(request , 'create_post.html')
+    if request.method == 'POST':
+        form = NewPostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home:show')  # Redirect to the post list or another appropriate view
+    else:
+        form = NewPostForm()
+    return render(request, 'create_post.html', {'form': form})
