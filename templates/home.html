@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+{% block page_title %}
+	صفحه اصلی
+{% endblock %}
+{% block content %}
+{% for item in posts %}
+	 <div class="card shadow-sm my-3">
+                <div class="card-body">
+
+                    <h5 class="card-title">{{ item.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted small py-2">{{ item.datetime_update }}</h6>
+
+                    <a href="{% url 'home:detail' item.id %}" class="btn btn-sm btn-success">Read More</a>
+
+                </div>
+            </div>
+    {% endfor %}
+{% endblock %}
