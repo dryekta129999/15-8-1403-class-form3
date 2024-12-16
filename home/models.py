@@ -7,7 +7,7 @@ class Post(models.Model):
         ('pub' , 'انتشار یافته'),
         ('drf' , 'پیش نمایش'),
     )
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=50,null=True,blank=True)
     information = models.TextField(max_length=500,null=True,blank=True)
     datetime_create = models.DateTimeField(auto_now_add=True)
     datetime_update = models.DateTimeField(auto_now=True)

@@ -1,0 +1,29 @@
+{% extends '_base.html' %}
+{#{% load crispy_forms_filters %}#}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <div class="card shadow my-3 p-5">
+
+        
+        <p class="display-6 fw-bolder">?Are you sure to delete this post</p>
+        <hr>
+        <div class="badge bg-primary text-wrap fs-1 fw-bold text-center " style="height:12rem;width: 15rem;">
+           {{ post.title }}
+        </div>
+         <hr>
+
+        
+        
+
+        
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="btn btn-danger fs-1 fw-bolder" type="submit" value="YES , DELETE">
+
+
+        </form>
+    </div>
+{% endblock %}
