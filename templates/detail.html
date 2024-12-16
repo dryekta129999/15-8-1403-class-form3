@@ -1,4 +1,9 @@
 {% extends '_base.html' %}
+{% load static %}
+{% block css %}
+	<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
 {% block page_title %}
     صفحه جزییات
 {% endblock %}
